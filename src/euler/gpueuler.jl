@@ -8,7 +8,7 @@ export GPUSimpleEuler
 
 @muladd function DiffEqBase.solve(prob::ODEProblem,
         alg::GPUSimpleEuler;
-        dt = error("dt is required for this algorithm"))
+        dt = error("dt is required for this algorithm"), kwargs...)
     @assert !isinplace(prob)
     u0 = prob.u0
     tspan = prob.tspan

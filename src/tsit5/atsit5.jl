@@ -58,7 +58,7 @@ end
 function DiffEqBase.__solve(prob::ODEProblem, alg::SimpleATsit5;
         dt = 0.1, saveat = nothing, save_everystep = true,
         abstol = 1e-6, reltol = 1e-3,
-        internalnorm = DiffEqBase.ODE_DEFAULT_NORM)
+        internalnorm = DiffEqBase.ODE_DEFAULT_NORM, kwargs...)
     u0 = prob.u0
     tspan = prob.tspan
     ts = Vector{eltype(dt)}(undef, 1)

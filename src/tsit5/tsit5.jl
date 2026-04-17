@@ -27,13 +27,13 @@ DiffEqBase.isinplace(::ST5I{IIP}) where {IIP} = IIP
 # Initialization
 #######################################################################################
 function DiffEqBase.__init(prob::ODEProblem, alg::SimpleTsit5;
-        dt = error("dt is required for this algorithm"))
+        dt = error("dt is required for this algorithm"), kwargs...)
     simpletsit5_init(prob.f, DiffEqBase.isinplace(prob), prob.u0,
         prob.tspan[1], dt, prob.p)
 end
 
 function DiffEqBase.__solve(prob::ODEProblem, alg::SimpleTsit5;
-        dt = error("dt is required for this algorithm"))
+        dt = error("dt is required for this algorithm"), kwargs...)
     u0 = prob.u0
     tspan = prob.tspan
     ts = Array(tspan[1]:dt:tspan[2])

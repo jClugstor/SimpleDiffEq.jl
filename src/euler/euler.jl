@@ -33,7 +33,7 @@ DiffEqBase.isinplace(::SEI{IIP}) where {IIP} = IIP
 ################################################################################
 
 function DiffEqBase.__init(prob::ODEProblem, alg::SimpleEuler;
-        dt = error("dt is required for this algorithm"))
+        dt = error("dt is required for this algorithm"), kwargs...)
     simpleeuler_init(prob.f,
         DiffEqBase.isinplace(prob),
         prob.u0,
@@ -43,7 +43,7 @@ function DiffEqBase.__init(prob::ODEProblem, alg::SimpleEuler;
 end
 
 function DiffEqBase.__solve(prob::ODEProblem, alg::SimpleEuler;
-        dt = error("dt is required for this algorithm"))
+        dt = error("dt is required for this algorithm"), kwargs...)
     u0 = prob.u0
     tspan = prob.tspan
     ts = Array(tspan[1]:dt:tspan[2])
